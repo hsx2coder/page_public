@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title></title>
+        <link>undefined</link>
+        <description>undefined</description>
+        <lastBuildDate>Sat, 09 May 2026 08:32:16 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[Demo]]></title>
+            <guid>7a23a7a3f1544271bfde6090f049ec1b</guid>
+            <pubDate>Sat, 09 May 2026 01:52:23 GMT</pubDate>
+            <content:encoded><![CDATA[<p><a title="https://www.youtube.com/watch?v=http://localhost:3000" href="https://www.youtube.com/watch?v=http://localhost:3000"><img src="https://img.youtube.com/vi/http://localhost:3000/default.jpg" alt="Video" /></a></p>
+<h1 id="lập-trình">Lập trình</h1>
+<p><strong>bản tin</strong><br />
+<img src="/_resources/d7b996b9e9c143d2948dae489f07998c.svg" /></p>
+
+				<div>
+					
+					<pre class="mermaid">sequenceDiagram
+    autonumber
+    
+    participant Client
+    participant Controller as StyleTransferController
+    participant Service as StyleTransferService
+    participant Repository as PhotoEditorTemplateRepository
+    participant Cache as RedisCache
+    participant Database
+
+    Client-&gt;&gt;+Controller: GET /api/photo-editor-template
+    Controller-&gt;&gt;+Service: getPhotoEditorTemplate
+    Service-&gt;&gt;+Repository: getCachedTemplates
+    
+    Repository-&gt;&gt;+Cache: GET (cache_key)
+
+    alt Cache Hit
+        Cache--&gt;&gt;Repository: Return templates (JSON)
+    else Cache Miss
+        Cache--&gt;&gt;-Repository: null
+        
+        Note over Repository, Database: Querying DB
+        Repository-&gt;&gt;+Database: SELECT * FROM templates
+        Database--&gt;&gt;-Repository: Return records
+
+        Note over Repository, Cache: Update Redis
+        Repository-&gt;&gt;+Cache: SET (cache_key, records)
+        Cache--&gt;&gt;-Repository: OK
+    end
+
+    Repository--&gt;&gt;-Service: Return Collection
+    Service--&gt;&gt;-Controller: Return final result
+    Controller--&gt;&gt;-Client: 200 OK
+</pre>
+				</div>
+			<h1 id="tiêu-đề">Tiêu đề</h1>
+
+				<div>
+					
+					<pre class="mermaid">graph TD
+    Start([Start]) --&gt; CheckData{Is Data Valid?}
+    
+    CheckData -- No --&gt; Error[Log Error]
+    Error --&gt; End([End])
+    
+    CheckData -- Yes --&gt; Process[Process Transaction]
+    
+    subgraph Heavy Lifting
+        Process --&gt; Step1[Step 1: Verify]
+        Step1 --&gt; Step2[Step 2: Execute]
+    end
+    
+    Step2 --&gt; Success[/Display Success Message/]
+    Success --&gt; End
+</pre>
+				</div>
+			<h1 id="mô-tả-nghiệp-vụ-tên-nghiệp-vụ">Mô tả nghiệp vụ: [Tên nghiệp vụ]</h1>
+<p>Document ID: [ID] | Phiên bản: [vX.Y] | Cập nhật lần cuối: [YYYY-MM-DD]
+Người soạn: [Tên] | Phụ trách duyệt: [Tên]</p>
+<h2 id="1-mục-đích-và-phạm-vi">1. Mục đích và phạm vi</h2>
+<ul>
+<li>Mục đích: [Tóm tắt ngắn gọn mục tiêu của nghiệp vụ.]</li>
+<li>Phạm vi: [Phạm vi áp dụng, hệ thống/khu vực, giới hạn thời gian, các yếu tố liên quan.]</li>
+</ul>
+<h2 id="2-định-nghĩa-và-thuật-ngữ">2. Định nghĩa và thuật ngữ</h2>
+<ul>
+<li>Term 1: [Định nghĩa]</li>
+<li>Term 2: [Định nghĩa]</li>
+<li>Term 3: [Định nghĩa]</li>
+</ul>
+<h2 id="3-vai-trò-và-trách-nhiệm">3. Vai trò và trách nhiệm</h2>
+<ul>
+<li>Vai trò A: [Mô tả trách nhiệm chính]</li>
+<li>Vai trò B: [Mô tả trách nhiệm chính]</li>
+<li>Vai trò C: [Mô tả trách nhiệm chính]</li>
+</ul>
+<h2 id="4-tổng-quan-quy-trình">4. Tổng quan quy trình</h2>
+<ul>
+<li>Mô tả ngắn gọn quy trình và mục tiêu kết quả.</li>
+<li>Dữ liệu đầu vào và đầu ra chính.</li>
+</ul>
+<h2 id="5-các-bước-quy-trình-step-by-step">5. Các bước quy trình (Step-by-step)</h2>
+<ol>
+<li>Bước 1: [Mô tả ngắn gọn; người thực hiện; đầu vào; đầu ra; điều kiện]</li>
+<li>Bước 2: [Mô tả ngắn gọn; người thực hiện; đầu vào; đầu ra; điều kiện]</li>
+<li>Bước 3: [Mô tả ngắn gọn; người thực hiện; đầu vào; đầu ra; điều kiện]</li>
+<li>Bước 4: [Mô tả ngắn gọn; người thực hiện; đầu vào; đầu ra; điều kiện]</li>
+<li>Bước 5: [Mô tả ngắn gọn; người thực hiện; đầu vào; đầu ra; điều kiện]</li>
+</ol>
+<blockquote>
+<p>Ghi chú: Bạn có thể thêm hoặc bớt bước sao cho tổng số bước trong khoảng 4–6 hoặc 6–8 bước, tùy mức độ chi tiết bạn muốn.</p>
+</blockquote>
+<h2 id="6-kpi-và-thước-đo-hiệu-suất">6. KPI và thước đo hiệu suất</h2>
+<ul>
+<li>KPI 1: [Mô tả] — Mục tiêu: [quy định/điểm mốc]</li>
+<li>KPI 2: [Mô tả] — Mục tiêu: [quy định/điểm mốc]</li>
+<li>KPI 3: [Mô tả] — Mục tiêu: [quy định/điểm mốc]</li>
+</ul>
+<h2 id="7-rủi-ro-kiểm-soát-và-biện-pháp-giảm-thiểu">7. Rủi ro, kiểm soát và biện pháp giảm thiểu</h2>
+<ul>
+<li>Rủi ro 1: [Mô tả] — Kiểm soát: [biện pháp]</li>
+<li>Rủi ro 2: [Mô tả] — Kiểm soát: [biện pháp]</li>
+<li>Biện pháp giảm thiểu chung: [khuyến nghị tổng quát]</li>
+</ul>
+<h2 id="8-phê-duyệt-và-liên-hệ">8. Phê duyệt và liên hệ</h2>
+<ul>
+<li>Người phê duyệt: [Tên / Chức danh]</li>
+<li>Liên hệ hỗ trợ: [Thông tin liên hệ]</li>
+<li>Tài liệu liên quan: [Danh sách tài liệu liên quan hoặc đường dẫn]</li>
+</ul>
+<h2 id="1-object-diagram-mermaid-11101-compatible">1. Object Diagram (Mermaid 11.10.1-compatible)</h2>
+
+				<div>
+					
+					<pre class="mermaid">objectDiagram
+    object BRRequest {
+        status
+        priority
+        createdOn
+        summary
+    }
+    object BusinessAnalyst {
+        name
+    }
+    object Approver {
+        name
+    }
+    object ProjectManager {
+        name
+    }
+    object SolutionDesign {
+        summary
+    }
+    object QAReport {
+        verdict
+    }
+    object Deployment {
+        releaseDate
+    }
+    object Stakeholder {
+        feedback
+    }
+
+    BRRequest --&gt; BusinessAnalyst : assignedTo
+    BRRequest --&gt; Approver : requiresApproval
+    BRRequest --&gt; ProjectManager : scheduledBy
+    ProjectManager --&gt; SolutionDesign : approves
+    SolutionDesign --&gt; QAReport : validatedBy
+    QAReport --&gt; Deployment : authorizes
+    Deployment --&gt; Stakeholder : notifies
+</pre>
+				</div>
+			<h2 id="2-entity-relationship-chart-mermaid">2. Entity Relationship Chart (Mermaid)</h2>
+
+				<div>
+					
+					<pre class="mermaid">erDiagram
+    BR_REQUEST {
+        string id PK
+        string title
+        string description
+        string status
+        string priority
+        datetime created_at
+        datetime approved_at
+    }
+    BUSINESS_ANALYST {
+        string id PK
+        string name
+        string team
+    }
+    APPROVER {
+        string id PK
+        string name
+        string role
+    }
+    PROJECT_PLAN {
+        string id PK
+        string br_request_id FK
+        datetime start_date
+        datetime end_date
+    }
+    SOLUTION_DESIGN {
+        string id PK
+        string project_plan_id FK
+        string summary
+        string version
+    }
+    QA_REPORT {
+        string id PK
+        string solution_design_id FK
+        string verdict
+        datetime completed_at
+    }
+    DEPLOYMENT {
+        string id PK
+        string solution_design_id FK
+        datetime deploy_date
+        string status
+    }
+    STAKEHOLDER {
+        string id PK
+        string name
+        string interest
+    }
+
+    BR_REQUEST ||--|| BUSINESS_ANALYST : owned_by
+    BR_REQUEST ||--|| APPROVER : approved_by
+    BR_REQUEST ||--|| PROJECT_PLAN : triggers
+    PROJECT_PLAN ||--|| SOLUTION_DESIGN : informs
+    SOLUTION_DESIGN ||--|| QA_REPORT : validated_by
+    SOLUTION_DESIGN ||--|| DEPLOYMENT : deployed_via
+    BR_REQUEST ||--|| STAKEHOLDER : impacts
+    STAKEHOLDER ||--|| DEPLOYMENT : notified_via
+</pre>
+				</div>
+			<h2 id="notes">Notes</h2>
+<ul>
+<li>Object diagram now defines each “object” block explicitly to satisfy Mermaid 11.10.1 syntax.</li>
+<li>Entity diagram retains static relationships plus PK/FK attributes for modeling.</li>
+</ul>
+<hr />
+<p><strong>ChatGPT Response:</strong></p>
+<h2 id="1-object-diagram-mermaid-11101-compatible-2">1. Object Diagram (Mermaid 11.10.1-compatible)</h2>
+
+				<div>
+					
+					<pre class="mermaid">objectDiagram
+    object BRRequest {
+        status
+        priority
+        createdOn
+        summary
+    }
+    object BusinessAnalyst {
+        name
+    }
+    object Approver {
+        name
+    }
+    object ProjectManager {
+        name
+    }
+    object SolutionDesign {
+        summary
+    }
+    object QAReport {
+        verdict
+    }
+    object Deployment {
+        releaseDate
+    }
+    object Stakeholder {
+        feedback
+    }
+
+    BRRequest --&gt; BusinessAnalyst : assignedTo
+    BRRequest --&gt; Approver : requiresApproval
+    BRRequest --&gt; ProjectManager : scheduledBy
+    ProjectManager --&gt; SolutionDesign : approves
+    SolutionDesign --&gt; QAReport : validatedBy
+    QAReport --&gt; Deployment : authorizes
+    Deployment --&gt; Stakeholder : notifies
+</pre>
+				</div>
+			<h2 id="2-entity-relationship-chart-mermaid-2">2. Entity Relationship Chart (Mermaid)</h2>
+
+				<div>
+					
+					<pre class="mermaid">erDiagram
+    BR_REQUEST {
+        string id PK
+        string title
+        string description
+        string status
+        string priority
+        datetime created_at
+        datetime approved_at
+    }
+    BUSINESS_ANALYST {
+        string id PK
+        string name
+        string team
+    }
+    APPROVER {
+        string id PK
+        string name
+        string role
+    }
+    PROJECT_PLAN {
+        string id PK
+        string br_request_id FK
+        datetime start_date
+        datetime end_date
+    }
+    SOLUTION_DESIGN {
+        string id PK
+        string project_plan_id FK
+        string summary
+        string version
+    }
+    QA_REPORT {
+        string id PK
+        string solution_design_id FK
+        string verdict
+        datetime completed_at
+    }
+    DEPLOYMENT {
+        string id PK
+        string solution_design_id FK
+        datetime deploy_date
+        string status
+    }
+    STAKEHOLDER {
+        string id PK
+        string name
+        string interest
+    }
+
+    BR_REQUEST ||--|| BUSINESS_ANALYST : owned_by
+    BR_REQUEST ||--|| APPROVER : approved_by
+    BR_REQUEST ||--|| PROJECT_PLAN : triggers
+    PROJECT_PLAN ||--|| SOLUTION_DESIGN : informs
+    SOLUTION_DESIGN ||--|| QA_REPORT : validated_by
+    SOLUTION_DESIGN ||--|| DEPLOYMENT : deployed_via
+    BR_REQUEST ||--|| STAKEHOLDER : impacts
+    STAKEHOLDER ||--|| DEPLOYMENT : notified_via
+</pre>
+				</div>
+			<h2 id="notes-2">Notes</h2>
+<ul>
+<li>
+<p>Object diagram now defines each “object” block explicitly to satisfy Mermaid 11.10.1 syntax.</p>
+</li>
+<li>
+<p>Entity diagram retains static relationships plus PK/FK attributes for modeling.</p>
+</li>
+<li>
+<p><a title="https://www.youtube.com/watch?v=http://localhost:3000" href="https://www.youtube.com/watch?v=http://localhost:3000"><img src="https://img.youtube.com/vi/http://localhost:3000/default.jpg" alt="Video" /></a></p>
+</li>
+</ul>
+]]></content:encoded>
+        </item>
+    </channel>
+</rss>
